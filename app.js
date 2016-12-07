@@ -20,6 +20,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(sassMiddleware({
+  src: __dirname,
+  dest: path.join(__dirname, 'public'),
+  debug: true,
+  outputStyle: 'compressed',
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
